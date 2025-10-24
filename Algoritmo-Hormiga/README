@@ -1,0 +1,40 @@
+1. **El Problema de la Mochila (Knapsack Problem)**
+Imagina que eres un ladrón con una mochila que solo soporta una capacidad máxima (en tu caso, CapacidadMochila = 750). Encuentras un conjunto de objetos, y cada objeto tiene:
+
+* Un peso (la lista pesos).
+
+* Un valor o ganancia (la lista ganancias).
+
+* Encontrar conjunto de objetos que ma!
+
+2. Optimización por Colonia de Hormigas (ACO) Es un algoritmo inspirado en cómo las hormigas de verdad encuentran el camino más corto entre su nido y una fuente de comida.
+
+Feromonas: Cuando las hormigas se mueven, dejan un rastro químico llamado feromona.
+
+Atracción: Otras hormigas tienden a seguir los caminos con más feromonas.
+
+Refuerzo: Cuando una hormiga encuentra comida y regresa, refuerza el camino que tomó, depositando más feromonas. Los caminos más cortos se completan más rápido y, por lo tanto, se refuerzan más veces.
+
+Evaporación: Las feromonas se evaporan con el tiempo, para que los caminos malos o antiguos dejen de ser atractivos.
+
+3. **Aplicando ACO al problema de la mochila**
+
+* Hormiga: Es un "agente" que construye una solución. En este caso, una hormiga "recorre" la lista de objetos y decide cuáles meter en la mochila.
+
+* **Solución: La mochila que "construye" cada hormiga.**
+
+* Feromona: En lugar de un camino, la feromona se asocia a cada objeto. Un objeto con un nivel alto de feromonas significa que "ha estado en mochilas exitosas (de alta ganancia) en el pasado".
+
+1.  Construcción: Mandas a tu colonia de hormigas (TamHormigas) a construir soluciones. Cada hormiga (j) mira cada objeto (k).
+
+2.  Decisión: La probabilidad de que una hormiga meta el objeto k en su mochila depende del nivel de feromona de ese objeto (Feromonas[k]). A más feromona, más probable es que lo elija.
+
+3.  Evaluación: Una vez que todas las hormigas tienen sus mochilas, las evalúas. Las "mejores" hormigas son las que obtuvieron la mayor ganancia sin pasarse del peso.
+
+Actualización de Feromonas:
+
+4.  Evaporación: Todas las feromonas de todos los objetos se reducen un poco (TasaEvaporacion).
+
+5.  Depósito: Las "mejores" hormigas depositan feromonas solo en los objetos que ellas eligieron. Esto refuerza la idea de que esos objetos son "buenos".
+
+6.  Repetir: Repites este proceso por NumGen generaciones, esperando que las hormigas converjan hacia una solución muy buena.
