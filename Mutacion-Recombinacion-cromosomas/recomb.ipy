@@ -1,0 +1,32 @@
+import random
+
+#Genera un cromosoma binario aleatorio de longitud dada
+def generar_cromosoma(longitud=10):
+    return [random.randint(0, 1) for _ in range(longitud)]
+
+#Realiza el cruce de un punto entre dos cromosomas
+def crossover_un_punto(padre1, padre2):
+    longitud = len(padre1)
+
+    punto_corte = random.randint(1, longitud - 1)  # elegir punto de corte aleatorio entre 1 y longitud-1
+
+    # generar hijos
+    hijo1 = padre1[:punto_corte] + padre2[punto_corte:]
+    hijo2 = padre2[:punto_corte] + padre1[punto_corte:]
+
+    return hijo1, hijo2, punto_corte
+
+
+# Generar padres
+padre1 = generar_cromosoma()
+padre2 = generar_cromosoma()
+
+# Aplicar recombinación
+hijo1, hijo2, corte = crossover_un_punto(padre1, padre2)
+
+# Mostrar resultados
+print(f"Padre 1: {padre1}")
+print(f"Padre 2: {padre2}")
+print(f"Punto de corte: {corte}")
+print(f"Hijo 1 : {hijo1}")
+print(f"Hijo 2 : {hijo2}")

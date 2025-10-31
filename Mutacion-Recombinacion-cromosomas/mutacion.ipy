@@ -1,0 +1,30 @@
+import random
+
+
+hijo1 = [0, 1, 0, 1, 1, 0, 1]
+hijo2 = [1, 1, 0, 0, 1, 0, 1]
+
+# Definimos 'corte' que se usa en la función mutacion
+
+corte = 3
+# -----------------------------------------------
+
+# Aplica mutacion en un gen aleatorio del cromosoma
+# La función mutacion asume que 'corte' es una variable global o está definida.
+def mutacion(cromosoma):
+    # La variable 'corte' se usa aquí.
+    indice = corte - 1
+    cromosoma[indice] = 1 - cromosoma[indice] # mutar el valor (si es 0 → 1, si es 1 → 0)
+    return cromosoma
+
+print("Antes de mutación:")
+print("Hijo 1:", hijo1)
+print("Hijo 2:", hijo2)
+
+# Mutamos cada hijo
+hijo1_mutado = mutacion(hijo1[:])  # usamos copia para no afectar original
+hijo2_mutado = mutacion(hijo2[:])
+
+print("\nDespués de mutación:")
+print(f"Hijo 1 mutado (gen {corte}):", hijo1_mutado)
+print(f"Hijo 2 mutado (gen {corte}):", hijo2_mutado)
